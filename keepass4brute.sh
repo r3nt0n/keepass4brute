@@ -6,7 +6,7 @@
 # Version: 1.0 (25/11/2022)
 
 version="1.1"
-/bin/echo -e "\nkeepass4brute $version by r3nt0n"
+/bin/echo -e "keepass4brute $version by r3nt0n"
 /bin/echo -e "https://github.com/r3nt0n/keepass4brute\n"
 
 
@@ -27,7 +27,8 @@ while read -r line; do
   n_tested=$((n_tested + 1))
   /bin/echo -ne "[+] Words tested: $n_tested/$n_total ($line)                                          \r"
 
-  if ! /bin/echo $line | keepassxc-cli open $1 2>&1 | /bin/grep -q "Error"
+  /bin/echo $line | keepassxc-cli open $1 &> /dev/null
+  if [ $? -eq 0 ]
   then
     /bin/echo -ne "\n"
     /bin/echo "[*] Password found: $line"; exit 0;
