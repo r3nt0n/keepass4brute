@@ -73,4 +73,4 @@ while read -r line; do
 done < $2
 
 /bin/echo -ne "\n"
-/bin/echo "[!] Wordlist exhausted, any match found"; exit 3;
+/bin/echo "[!] Wordlist exhausted, no match found"; exit 3;
